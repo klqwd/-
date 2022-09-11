@@ -63,12 +63,12 @@
       <van-grid column-num="2">
         <van-grid-item text="收藏">
           <template #icon>
-            <span class="iconfont iconfont-shoucang"></span>
+            <span class="iconfont icon-shoucang"></span>
           </template>
         </van-grid-item>
         <van-grid-item text="历史">
           <template #icon>
-            <span class="iconfont iconfont-lishi"></span>
+            <span class="iconfont icon-lishi"></span>
           </template>
         </van-grid-item>
       </van-grid>
@@ -80,7 +80,9 @@
 
     <!-- 底部 -->
     <footer>
-      <van-button v-if="isLogin" @click="logout">退出</van-button>
+      <van-button v-if="isLogin" @click="logout" class="button"
+        >退出</van-button
+      >
     </footer>
   </div>
 </template>
@@ -185,5 +187,8 @@ export default {
 }
 .toutiao-lishi {
   color: orange;
+}
+.button {
+  width: 100%;
 }
 </style>

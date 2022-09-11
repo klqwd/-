@@ -9,11 +9,11 @@ const routes = [
   {
     path: '/',
     component: () => import('@/views/Layout'),
-    redirect: '/',
+    redirect: '/ ',
     children: [
       {
-        path: '/',
-        component: () => import('@/views/Layout')
+        path: '/ ',
+        component: () => import('@/views/Home')
       },
       {
         path: '/video',
