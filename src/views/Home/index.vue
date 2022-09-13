@@ -1,31 +1,48 @@
 <template>
   <div>
     <van-nav-bar class="navbar">
-      <template #title>
-        <van-button icon="search" size="small" round block> 搜索</van-button>
+      <template #title
+        ><van-button icon="search" size="small" round block> 搜索</van-button>
       </template>
     </van-nav-bar>
-    <!-- 频道及文章展示 -->
+    <!-- 频道及文章展示 标签栏 -->
     <van-tabs v-model="active" swipeable>
       <van-tab v-for="item in channels" :key="item.id" :title="item.name">
         <article-list :id="item.id"></article-list>
       </van-tab>
+      <span class="toutiao toutiao-gengduo" @click="isShow = true"></span>
     </van-tabs>
+
+    <!-- 弹出层 -->
+    <van-popup
+      v-model="isShow"
+      closeable
+      close-icon-position="top-left"
+      position="bottom"
+      :style="{ height: '100%' }"
+    >
+      <Channel-edit
+        :myChannels="channels"
+        @change-active="[(isShow = false), (active = $event)]"
+      ></Channel-edit>
+    </van-popup>
   </div>
 </template>
 
 <script>
 import { getChannelAPI } from "@/api/channel";
-
+import ChannelEdit from "./components/ChannelEdit";
 import ArticleList from "./components/ArticleList";
 export default {
   components: {
     ArticleList,
+    ChannelEdit,
   },
   data() {
     return {
       active: 0,
       channels: [],
+      isShow: false,
     };
   },
   created() {

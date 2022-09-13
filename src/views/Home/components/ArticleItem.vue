@@ -29,6 +29,7 @@
 </template>
 
 <script>
+import dayjs from "@/utills/day";
 export default {
   props: {
     article: {
@@ -38,8 +39,10 @@ export default {
   },
   computed: {
     label() {
-      const { aut_name, comm_count, pubate } = this.article;
-      return `${aut_name}${comm_count}评论${pubate}`;
+      const { aut_name, comm_count, pubdate } = this.article;
+      return `${aut_name}  ${comm_count}评论      ${dayjs(pubdate).format(
+        "YYYY/DD/MM/"
+      )}`;
     },
   },
 };
