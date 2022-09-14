@@ -59,6 +59,7 @@ export default {
           }
         }
       }
+      console.log(this.articles);
     },
     async getNextPageArticle() {
       //1.发送请求
